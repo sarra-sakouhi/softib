@@ -1,0 +1,13 @@
+package com.softIB;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class SoftIbApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

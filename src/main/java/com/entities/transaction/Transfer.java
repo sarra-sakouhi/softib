@@ -2,7 +2,7 @@ package com.entities.transaction;
 
 import javax.persistence.OneToOne;
 
-import com.entities.bankAccount.BankAccount;
+import com.entities.compteBancaire.BankAccount;
 
 import lombok.Getter;
 import lombok.Setter;

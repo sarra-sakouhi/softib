@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import com.entities.compteBancaire.BankAccount;
+import com.entities.compteBancaire.CompteBancaire;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,9 +20,9 @@ public abstract class Transaction {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@OneToOne
-	private BankAccount sourceAccount;
-	private double amount;
-	private String transactionLable;
-	private long transactionNumber;
+	private CompteBancaire compteSource;
+	private double montant;
+	private String libeleTransaction;
+	private long numeroTransaction;
 
 }

@@ -1,14 +1,16 @@
-package com.entities.credit;
+package com.entities.communication;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import com.entities.compteBancaire.BankAccount;
+import com.entities.user.Utilisateur;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,19 +18,15 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public abstract class Credit {
+public class Message {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private double totalAmount;
-	private Date echanceDate;
-	private short monthDuration;
-	private double rate;
-	private Date creditDate;
-	private double tmm;
-	private short nbMonthsRemaining;
-	private boolean active;
 	@OneToOne
-	private BankAccount bankAccount;
-
+	private Utilisateur emetteur;
+	@OneToMany
+	private List<Utilisateur> utilisateursCible;
+	private String message;
+	private Date date;
+	private boolean vu;
 }

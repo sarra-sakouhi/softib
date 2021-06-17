@@ -1,4 +1,4 @@
-package com.entities.credit;
+package com.entities.compteBancaire;
 
 import java.util.Date;
 
@@ -8,7 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import com.entities.compteBancaire.BankAccount;
+import org.hibernate.annotations.GeneratorType;
+
+import com.entities.user.Client;
+import com.entities.user.Utilisateur;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,19 +19,19 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public abstract class Credit {
+public class BankAccount {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private double totalAmount;
-	private Date echanceDate;
-	private short monthDuration;
-	private double rate;
-	private Date creditDate;
-	private double tmm;
-	private short nbMonthsRemaining;
+	private double solde;
+	private String rib;
+	private String label;
 	private boolean active;
+	private Date creationDate;
+	private Date lastActionDate;
+	private AccountType accountType;
 	@OneToOne
-	private BankAccount bankAccount;
+	private Client client;
 
 }

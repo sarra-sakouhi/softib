@@ -19,18 +19,18 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class BankAccount {
+public class CompteBancaire {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private double solde;
 	private String rib;
-	private String label;
+	private String libele;
 	private boolean active;
-	private Date creationDate;
-	private Date lastActionDate;
-	private AccountType accountType;
+	private Date dateCreation;
+	private Date dateDerniereAction;
+	private AccountType typeCompte;
 	@OneToOne
 	private Client client;
 

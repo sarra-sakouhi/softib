@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import com.entities.compteBancaire.BankAccount;
+import com.entities.compteBancaire.CompteBancaire;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -29,6 +29,6 @@ public abstract class Credit {
 	private short nbMonthsRemaining;
 	private boolean active;
 	@OneToOne
-	private BankAccount bankAccount;
+	private CompteBancaire bankAccount;
 
 }

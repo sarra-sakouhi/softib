@@ -2,7 +2,7 @@ package com.entities.transaction;
 
 import javax.persistence.OneToOne;
 
-import com.entities.compteBancaire.BankAccount;
+import com.entities.compteBancaire.CompteBancaire;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +12,6 @@ import lombok.Setter;
 public class Transfer extends Transaction {
 
 	@OneToOne
-	private BankAccount destinationAccount;
+	private CompteBancaire destinationAccount;
 
 }

@@ -33,14 +33,16 @@ public class CreditServiceImpl implements IcreditService{
 	.orElseThrow(() -> new RessourceNotFoundException("Credit not found with id " + id));
 	}
 
-	public void updateCredit(long id, Credit creditToUpdate) {
+	public Credit updateCredit(long id, Credit creditToUpdate) {
 
 	Credit credit = creditRepository.findById(id)
 	.orElseThrow(() -> new RessourceNotFoundException("Credit not found with id " + id));
 
 	Credit.setCredit(creditToUpdate.getCredit());
 
-	creditRepository.save(credit);
+	Credit Updatedcredit = creditRepository.save(credit);
+	
+	return Updatedcredit;
 
 	}
 

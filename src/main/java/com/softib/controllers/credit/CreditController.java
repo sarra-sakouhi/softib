@@ -1,0 +1,64 @@
+package com.softib.controllers.credit;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.softib.entities.credit.Credit;
+import com.softib.services.credit.IcreditService;
+
+
+
+@RestController
+@RequestMapping("/softib/credit/")
+public class CreditController {
+	@Autowired
+	private IcreditService creditService;
+
+	@GetMapping("/credits")
+	public List<Credit> getAllCredits(){
+
+		return creditService.getAllCredits();
+	}
+
+	@PostMapping("/credits")
+	public Credit createCredit(@RequestBody Credit credit) {
+
+		return creditService.createCredit(credit);
+	}
+
+	@GetMapping("/credits/{id}")
+	public ResponseEntity<Credit> getCreditById(@PathVariable long id) {
+
+		Credit credit=creditService.getCreditById(id);
+		return ResponseEntity.ok(credit);
+	}
+
+	@PutMapping("/credits/{id}")
+	public ResponseEntity<Credit> updateCredit(@PathVariable long id, @RequestBody Credit creditWithUpdates){
+
+		Credit updatedCredit=creditService.updateCredit(id,creditWithUpdates);
+		return ResponseEntity.ok(updatedCredit);
+	}
+
+	@DeleteMapping("/credits/{id}")
+	public ResponseEntity<Map<String,Boolean>> deleteCredit(@PathVariable long id){
+
+		creditService.deleteCredit(id);
+		Map<String,Boolean> response=new HashMap<>();
+		response.put("deleted", Boolean.TRUE);
+		return ResponseEntity.ok(response);
+
+	}
+}

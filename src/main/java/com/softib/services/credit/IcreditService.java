@@ -12,7 +12,7 @@ public interface IcreditService {
 
 	public Credit getCreditById(long id);
 
-	public void updateCredit(long id, Credit Credit);
+	public Credit updateCredit(long id, Credit Credit);
 
 	public void deleteCredit(long id);
 

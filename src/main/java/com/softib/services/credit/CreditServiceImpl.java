@@ -38,7 +38,7 @@ public class CreditServiceImpl implements IcreditService{
 	Credit credit = creditRepository.findById(id)
 	.orElseThrow(() -> new RessourceNotFoundException("Credit not found with id " + id));
 
-	Credit.setCredit(creditToUpdate.getCredit());
+	//Credit.setCredit(creditToUpdate.getCredit());
 
 	Credit Updatedcredit = creditRepository.save(credit);
 	

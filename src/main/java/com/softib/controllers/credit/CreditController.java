@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.softib.entities.credit.Credit;
-import com.softib.services.credit.IcreditService;
+import com.softib.services.credit.CreditServiceImpl;
 
 
 
@@ -24,7 +24,7 @@ import com.softib.services.credit.IcreditService;
 @RequestMapping("/softib/credit/")
 public class CreditController {
 	@Autowired
-	private IcreditService creditService;
+	private CreditServiceImpl creditService;
 
 	@GetMapping("/credits")
 	public List<Credit> getAllCredits(){

@@ -16,7 +16,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public abstract class Credit {
+public class Credit {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

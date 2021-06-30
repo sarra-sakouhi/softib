@@ -17,12 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.softib.entities.communication.Message;
 import com.softib.services.communication.IMessageService;
+import com.softib.services.communication.MessageService;
 
 @RestController
 @RequestMapping("/softib/com/")
 public class MessageController {
 	@Autowired
-	private IMessageService messageService;
+	private MessageService messageService;
 
 	@GetMapping("/Messages")
 	public List<Message> getAllMessages(){

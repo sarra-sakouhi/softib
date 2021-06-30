@@ -39,7 +39,6 @@ public class MessageService {
 		Message message = messageRepository.findById(id)
 				.orElseThrow(() -> new RessourceNotFoundException(RESSOURCE_NOT_FOUND_MSG + id));
 
-		Message.setMessage(messageWithUpdates.getMessage());
 		Message updatedMessage = messageRepository.save(message);
 		return updatedMessage;
 	}

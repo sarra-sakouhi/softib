@@ -1,5 +1,6 @@
 package com.softib.entities.user;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -23,6 +24,8 @@ public abstract class Utilisateur {
 	private String email;
 	private long numTel;
 	private String adress;
+	private Sexe sexe;
+	private Date dateNaissance;
 	private String username;
 	private String password;
 	@OneToMany

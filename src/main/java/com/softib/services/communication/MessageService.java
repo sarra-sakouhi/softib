@@ -3,8 +3,12 @@ package com.softib.services.communication;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.softib.entities.communication.Mail;
 import com.softib.entities.communication.Message;
 import com.softib.exceptions.RessourceNotFoundException;
 import com.softib.repositories.communication.IMessageRepository;
@@ -50,5 +54,43 @@ public class MessageService {
 
 	messageRepository.delete(message);
 
+	}
+	
+	//Mail
+	@Autowired
+    private JavaMailSender mailSender;
+	
+	public void sendMail(Mail mail) {
+		String from = mail.getEmetteur().getEmail();
+		String to = mail.getUtilisateursCible().get(0).getEmail();
+		 
+		SimpleMailMessage message = new SimpleMailMessage();
+		 
+		message.setFrom(from);
+		message.setTo(to);
+		message.setSubject(mail.getObjet());
+		message.setText(mail.getMessage());
+		 
+		mailSender.send(message);
+	}
+	
+	
+	//Mail test---------------------------------------------------------------------
+	
+	@Autowired
+	private Environment env;
+	
+	public void sendMailTest() {
+		String from = env.getProperty("spring.mail.username");
+		String to = "achref.gomri@wooden.tn";
+		 
+		SimpleMailMessage message = new SimpleMailMessage();
+		 
+		message.setFrom(from);
+		message.setTo(to);
+		message.setSubject("Message from heart");
+		message.setText("Love you <3.");
+		 
+		mailSender.send(message);
 	}
 }

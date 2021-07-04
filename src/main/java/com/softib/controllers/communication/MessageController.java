@@ -20,7 +20,7 @@ import com.softib.services.communication.IMessageService;
 import com.softib.services.communication.MessageService;
 
 @RestController
-@RequestMapping("/softib/com/")
+@RequestMapping("/com/")
 public class MessageController {
 	@Autowired
 	private MessageService messageService;
@@ -59,5 +59,12 @@ public class MessageController {
 		response.put("deleted", Boolean.TRUE);
 		return ResponseEntity.ok(response);
 
+	}
+	
+	//Mail
+	@GetMapping("/sendMailTest")
+	public void sendMailTest(){
+		messageService.sendMailTest();
+		System.out.printf("Mail Test envoyé !");
 	}
 }
